@@ -1,0 +1,38 @@
+# Maven build directory
+/target/
+
+# Gradle build directory
+/build/
+
+# IntelliJ IDEA project files
+/.idea/
+/*.iml
+
+# Eclipse project files
+/.project
+/.classpath
+/.settings/
+
+
+
+# VS Code project files
+/.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Dependency directories
+/node_modules/
+/dist/
+
+# Compiled files
+*.class
+
+# Sensitive configuration files
+#application.properties
+#application.yml
