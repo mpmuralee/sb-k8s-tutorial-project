@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  imageName: 'myacrlearning.azurecr.io/demo'
+
+steps:
+  - task: Maven@3
+    inputs:
+      goals: 'package'
+      options: '-DskipTests'
+
+  - task: Docker@2
+    inputs:
+      containerRegistry: 'MyContainerRegistry'  # Add your ACR service connection
+      repository: $(imageName)
+      command: 'buildAndPush'
+      Dockerfile: '**/Dockerfile'
+      tags: |
+        $(Build.BuildId)
