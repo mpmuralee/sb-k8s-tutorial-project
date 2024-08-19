@@ -7,7 +7,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  imageName: 'myacrlearning.azurecr.io/demo'
+  imageName: 'sbk8stutorialacr.azurecr.io/demo'
 
 steps:
   - task: Maven@3
@@ -17,7 +17,7 @@ steps:
 
   - task: Docker@2
     inputs:
-      containerRegistry: 'MyContainerRegistry'  # Add your ACR service connection
+      containerRegistry: 'acr-sb-k8s-tutorial-connection'  # Add your ACR service connection
       repository: $(imageName)
       command: 'buildAndPush'
       Dockerfile: '**/Dockerfile'
