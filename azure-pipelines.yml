@@ -4,13 +4,14 @@ trigger:
       - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: 'Self-Hosted Agent Token'  # Reference your self-hosted agent pool
 
 variables:
   imageName: 'sbk8stutorialacr.azurecr.io/demo'
 
 jobs:
   - job: Build
+    pool: 'Self-Hosted Agent Token'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Maven@3
         inputs:
@@ -19,6 +20,7 @@ jobs:
 
   - job: Docker
     dependsOn: Build
+    pool: 'Self-Hosted Agent Token'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Docker@2
         inputs:
