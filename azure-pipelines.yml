@@ -20,7 +20,7 @@ jobs:
 
   - job: Docker
     dependsOn: Build
-    pool: 'Self-Hosted Agent Token'  # Ensure each job uses the self-hosted agent pool
+    pool: 'Default'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Docker@2
         inputs:
