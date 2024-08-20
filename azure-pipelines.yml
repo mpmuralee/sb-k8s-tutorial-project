@@ -22,7 +22,7 @@ jobs:
     steps:
       - task: Docker@2
         inputs:
-          containerRegistry: 'mpmuralee'  # Add your ACR service connection
+          containerRegistry: 'acr-connection'  # Add your ACR service connection
           repository: $(imageName)
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
