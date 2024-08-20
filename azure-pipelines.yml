@@ -4,14 +4,14 @@ trigger:
       - master
 
 pool:
-  name: 'Self-Hosted Agent Token'  # Reference your self-hosted agent pool
+  name: 'Default'  # Reference your self-hosted agent pool
 
 variables:
   imageName: 'sbk8stutorialacr.azurecr.io/demo'
 
 jobs:
   - job: Build
-    pool: 'Self-Hosted Agent Token'  # Ensure each job uses the self-hosted agent pool
+    pool: 'Default'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Maven@3
         inputs:
