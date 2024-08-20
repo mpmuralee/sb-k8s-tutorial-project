@@ -4,14 +4,13 @@ trigger:
       - master
 
 pool:
-  name: 'Default'  # Reference your self-hosted agent pool
+  vmImage: 'ubuntu-latest'
 
 variables:
   imageName: 'sbk8stutorialacr.azurecr.io/demo'
 
 jobs:
   - job: Build
-    pool: 'Default'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Maven@3
         inputs:
@@ -20,11 +19,10 @@ jobs:
 
   - job: Docker
     dependsOn: Build
-    pool: 'Default'  # Ensure each job uses the self-hosted agent pool
     steps:
       - task: Docker@2
         inputs:
-          containerRegistry: 'acr-connection'  # Add your ACR service connection
+          containerRegistry: 'acr-connection'  # Name of your ACR service connection
           repository: $(imageName)
           command: 'buildAndPush'
           Dockerfile: '**/Dockerfile'
